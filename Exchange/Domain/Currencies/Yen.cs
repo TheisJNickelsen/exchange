@@ -8,5 +8,9 @@ namespace Exchange.Domain.Currencies
             : base("Japanese yen", new Iso("JPY"), 5.9740m)
         {
         }
+        public Yen(decimal amount)
+            : base("Japanese yen", new Iso("JPY"), 5.9740m, amount)
+        {
+        }
     }
 }

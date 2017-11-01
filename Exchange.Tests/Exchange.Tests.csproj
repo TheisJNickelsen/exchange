@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CurrencyFactoryTests.cs" />
     <Compile Include="DomainTests\CurrencyTests\EuroTests.cs" />
+    <Compile Include="DomainTests\ValueObjectTests\IsoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,5 +8,9 @@ namespace Exchange.Domain.Currencies
             : base("Swedish krone", new Iso("SEK"), 76.10m)
         {
         }
+        public SwedishKrone(decimal amount)
+            : base("Swedish krone", new Iso("SEK"), 76.10m, amount)
+        {
+        }
     }
 }

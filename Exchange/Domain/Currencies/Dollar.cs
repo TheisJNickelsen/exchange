@@ -8,5 +8,9 @@ namespace Exchange.Domain.Currencies
             : base("American dollar", new Iso("USD"), 663.11m)
         {
         }
+        public Dollar(decimal amount)
+            : base("American dollar", new Iso("USD"), 663.11m, amount)
+        {
+        }
     }
 }

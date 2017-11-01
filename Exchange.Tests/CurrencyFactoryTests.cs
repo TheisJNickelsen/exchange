@@ -37,8 +37,7 @@ namespace Exchange.Tests
         [Fact]
         public void ShouldFailOnUnsupportedCurrency()
         {
-            Assert.Throws<UnsupportedCurrencyException>(() => 
-            CurrencyFactory.Create("UnsupportedCurrency"));
+            Assert.Throws<UnsupportedCurrencyException>(() => CurrencyFactory.Create("UnsupportedCurrency"));
         }
     }
 }

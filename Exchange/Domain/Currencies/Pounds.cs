@@ -8,5 +8,9 @@ namespace Exchange.Domain.Currencies
             : base("British pounds", new Iso("GBP"), 852.85m)
         {
         }
+        public Pounds(decimal amount)
+            : base("British pounds", new Iso("GBP"), 852.85m, amount)
+        {
+        }
     }
 }

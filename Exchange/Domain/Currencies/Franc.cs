@@ -8,5 +8,9 @@ namespace Exchange.Domain.Currencies
             : base("Schwetzingen Frank", new Iso("CHF"), 683.58m)
         {
         }
+        public Franc(decimal amount)
+            : base("Schwetzingen Frank", new Iso("CHF"), 683.58m, amount)
+        {
+        }
     }
 }

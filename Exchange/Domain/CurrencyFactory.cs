@@ -35,21 +35,21 @@ namespace Exchange.Domain
             switch (iso)
             {
                 case "EUR":
-                    return new Euro();
+                    return new Euro(amount);
                 case "DKK":
-                    return new DanishKrone();
+                    return new DanishKrone(amount);
                 case "USD":
-                    return new Dollar();
+                    return new Dollar(amount);
                 case "GBP":
-                    return new Pounds();
+                    return new Pounds(amount);
                 case "SEK":
-                    return new SwedishKrone();
+                    return new SwedishKrone(amount);
                 case "NOK":
-                    return new NorwegianKrone();
+                    return new NorwegianKrone(amount);
                 case "CHF":
-                    return new Franc();
+                    return new Franc(amount);
                 case "JPY":
-                    return new Yen();
+                    return new Yen(amount);
                 default:
                     throw new UnsupportedCurrencyException("Unknown currency: " + iso);
             }

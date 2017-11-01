@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exchange.Domain;
+﻿using Exchange.Domain;
+using System;
 
 namespace Exchange
 {
@@ -28,13 +24,15 @@ namespace Exchange
                             try
                             {
                                 var inArr = input.Split(' ');
-
-                                var currency1 = CurrencyFactory.Create(inArr[1].Split('/')[0]);
-                                var currency2 = CurrencyFactory.Create(inArr[1].Split('/')[1]);
+                                
                                 int amount;
                                 if (int.TryParse(inArr[2], out amount))
                                 {
-                                    Console.WriteLine(currency1.ExchangeTo(currency2, amount));
+                                    var currency1 = CurrencyFactory.Create(inArr[1].Split('/')[0], amount);
+                                    var currency2 = CurrencyFactory.Create(inArr[1].Split('/')[1]);
+
+                                    currency1.ExchangeTo(currency2);
+                                    Console.WriteLine(currency2.Amount);
                                 }
                             }
                             catch (Exception e)
