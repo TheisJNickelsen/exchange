@@ -43,22 +43,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Currencies\Currency.cs" />
-    <Compile Include="Domain\CurrencyFactory.cs" />
-    <Compile Include="Domain\Currencies\Yen.cs" />
-    <Compile Include="Domain\Currencies\Franc.cs" />
-    <Compile Include="Domain\Currencies\NorwegianKrone.cs" />
-    <Compile Include="Domain\Currencies\SwedishKrone.cs" />
-    <Compile Include="Domain\Currencies\Pounds.cs" />
-    <Compile Include="Domain\Currencies\Dollar.cs" />
-    <Compile Include="Domain\Currencies\DanishKrone.cs" />
-    <Compile Include="Domain\Currencies\Euro.cs" />
     <Compile Include="Domain\ValueObjects\Iso.cs" />
     <Compile Include="Exceptions\UnsupportedCurrencyException.cs" />
+    <Compile Include="Parsers\IInputParser.cs" />
+    <Compile Include="Parsers\Input.cs" />
+    <Compile Include="Parsers\InputParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ExchangeRepository.cs" />
+    <Compile Include="Repositories\IExchangeRepository.cs" />
+    <Compile Include="Services\ExchangeService.cs" />
+    <Compile Include="Services\IExchangeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

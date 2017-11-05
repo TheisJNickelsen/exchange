@@ -9,8 +9,7 @@ namespace Exchange.Tests.DomainTests.ValueObjectTests
         [Fact]
         public void ShouldCreateIsoOnCorrectCharacterLength()
         {
-            var iso = new Iso("ASD");
-            Assert.NotNull(iso);
+            new Iso("ASD");
         }
 
         [Fact]

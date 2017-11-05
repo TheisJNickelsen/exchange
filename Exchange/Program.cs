@@ -1,4 +1,6 @@
-﻿using Exchange.Domain;
+﻿using Exchange.Parsers;
+using Exchange.Repositories;
+using Exchange.Services;
 using System;
 
 namespace Exchange
@@ -7,47 +9,38 @@ namespace Exchange
     {
         static void Main(string[] args)
         {
-            string input;
+            //DI setup preferred
+            IExchangeRepository exchangeRepository = new ExchangeRepository();
+            IExchangeService exchangeService = new ExchangeService(exchangeRepository);
+            IInputParser inputParser = new InputParser();
+
+            string inputArgs;
             do
             {
-                input = Console.ReadLine();
-                try
-                {
-                    if (input != null && input.Equals("Exchange"))
-                    {
-                        Console.WriteLine("Usage: Exchange <currency pair> <amount to exchange>");
-                    }
-                    else
-                    {
-                        if (input != null)
-                        {
-                            try
-                            {
-                                var inArr = input.Split(' ');
-                                
-                                int amount;
-                                if (int.TryParse(inArr[2], out amount))
-                                {
-                                    var currency1 = CurrencyFactory.Create(inArr[1].Split('/')[0], amount);
-                                    var currency2 = CurrencyFactory.Create(inArr[1].Split('/')[1]);
+                inputArgs = Console.ReadLine();
 
-                                    currency1.ExchangeTo(currency2);
-                                    Console.WriteLine(currency2.Amount);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("{0} Value read = {1}.", e.Message, input);
-                            }
-                        }
+                if (inputArgs != null && inputArgs.Equals("Exchange"))
+                {
+                    Console.WriteLine("Usage: Exchange <currency pair> <amount to exchange>");
+                }
+                else
+                {
+                    try
+                    {
+                        var input = inputParser.GetInput(inputArgs);
+                        if (input == null) continue;
+                        Console.WriteLine(
+                            exchangeService.ExchangeCurrencies(
+                                input.Currency1,
+                                input.Currency2,
+                                input.Amount));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("{0} Value read = {1}.", e.Message, inputArgs);
                     }
                 }
-                catch (OverflowException e)
-                {
-                    Console.WriteLine("{0} Value read = {1}.", e.Message, input);
-                }
-            } while (input != "+");
+            } while (inputArgs != null && !inputArgs.Equals("+"));
         }
-
     }
 }
